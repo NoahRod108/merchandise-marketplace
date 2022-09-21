@@ -77,6 +77,19 @@ const products = [
     rating: 4,
     numReviews: 12,
   },
+  {
+    _id: '7',
+    name: 'Amazon Echo Dot 33rd Generation',
+    image: '/images/alexa.jpg',
+    description:
+      'Meet Echo Dot - This is the newest shit we have.',
+    brand: 'Amazon',
+    category: 'Electronics',
+    price: 299.99,
+    countInStock: 0,
+    rating: 5,
+    numReviews: 8,
+  },
 ]
 
 export default products
