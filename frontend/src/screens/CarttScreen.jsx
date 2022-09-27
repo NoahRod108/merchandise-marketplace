@@ -8,15 +8,16 @@ import { addToCart } from './../actions/cartActions';
 const CarttScreen = () => {
     const params = useParams();
     const location = useLocation();
-    const productId = params.id;
-    const qty = location.search ? Number(location.search.split('=')[1]) : 1;
     const dispatch = useDispatch();
+    const productId = params.id;
+
+    const qty = new URLSearchParams(location.search).get('qty');
+    const cart = useSelector((state) => state.reducer.cart);
+    const { cartItems } = cart;
 
     useEffect(() =>{
-        productId && dispatch(addToCart(productId));
-    }, [params, dispatch, productId])
-
-    console.log(qty);
+        productId && dispatch(addToCart(productId, qty));
+    }, [params, dispatch, productId, qty])
 
   return (
     <div>CarttScreen</div>

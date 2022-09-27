@@ -13,7 +13,7 @@ const cartLocalStorage = localStorage.getItem('cartItems') ? JSON.parse(localSto
 
 const preloadedState = {
     reducer: {
-        cart: {cartLocalStorage}
+        cart: {cartItems: cartLocalStorage}
     }
 }
 
