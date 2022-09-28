@@ -38,3 +38,11 @@ main{
 .rating i {
     color: rgb(220, 220, 0);
 }
+
+.cart--items{
+    padding: 1rem;
+}
+
+.cart--items .row [class^='col']{
+    margin: auto;
+}

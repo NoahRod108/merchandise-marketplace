@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useParams, useNavigate, useLocation } from 'react-router-dom'
+import { Link, useParams, useNavigate } from 'react-router-dom'
 import { Row, Col, Image, ListGroup, Card, Button, Form } from 'react-bootstrap'
 import Rating from './../components/Rating';
 import { useDispatch, useSelector } from 'react-redux';
@@ -8,15 +8,13 @@ import { addToCart } from './../actions/cartActions';
 import Loader from '../components/Loader';
 import Message from '../components/Message';
 
-const ProductScreen = (history) => {
+const ProductScreen = () => {
     const [qty, setQty] = useState(1);
     const params = useParams();
     const navigate = useNavigate();
-    const location = useLocation();
     const dispatch = useDispatch();
     
     const productDetails = useSelector(state => state.reducer.productDetails);
-    const cart = useSelector((state) => state.reducer.cart);
     const { loading, error, product } = productDetails;
 
     useEffect(() => {
@@ -98,7 +96,7 @@ const ProductScreen = (history) => {
 
                             <ListGroup.Item>
                                 <Row className='m-1'>
-                                    <Button className='rounded' type='button' disabled={product.countInStock === 0} onClick={addToCartHandler}>Add to Cart</Button>
+                                    <Button className='rounded' variant='dark' type='button' disabled={product.countInStock === 0} onClick={addToCartHandler}>Add to Cart</Button>
                                 </Row>
                             </ListGroup.Item>
                         </ListGroup>
