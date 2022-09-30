@@ -54,7 +54,7 @@ const CarttScreen = () => {
                       </Form.Select>
                     </Col>
                     <Col md={2}>
-                        <Button type='button' className='rounded' variant='light' onClick={() => removeFromCartHandler(item.product)}>
+                        <Button type='button' className='rounded' variant='light' disabled={item.countInStock === 0} onClick={() => removeFromCartHandler(item.product)}>
                           <i className='fas fa-trash'></i>
                         </Button>
                     </Col>
@@ -74,7 +74,7 @@ const CarttScreen = () => {
                 </ListGroup.Item>
                 <ListGroup.Item>
                     <Row className='m-1'>
-                        <Button className='rounded' variant='dark' type='button' disabled={cartItems.countInStock === 0} onClick={checkoutHandler}>Checkout</Button>
+                        <Button className='rounded' variant='dark' type='button' disabled={cartItems.length === 0} onClick={checkoutHandler}>Checkout</Button>
                     </Row>
                 </ListGroup.Item>
             </ListGroup>

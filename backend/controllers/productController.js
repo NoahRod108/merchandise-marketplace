@@ -2,7 +2,7 @@ import Product from '../models/productModel.js';
 import asyncHandler from 'express-async-handler';
 
 // Fetch all products
-// /pi/products
+// /api/products
 const getProducts = asyncHandler( async (req, res) => {
     const products = await Product.find({});
 

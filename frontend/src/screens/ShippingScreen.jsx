@@ -1,26 +1,33 @@
 import React, { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import Message from '../components/Message';
-import Loader from '../components/Loader';
+
 import FormContainer from '../components/FormContainer';
+import { saveShippingAddress } from '../actions/cartActions';
+import CheckoutProcess from '../components/CheckoutProcess';
 
-const ShipingScreen = () => {
+const ShippingScreen = () => {
     const navigation = useNavigate();
+    const dispatch = useDispatch();
 
-    const [address, setAddress] = useState('');
-    const [city, setCity] = useState('');
-    const [postalCode, setPostalCode] = useState('');
-    const [country, setCountry] = useState('');
+    const cart = useSelector((state) => state.reducer.cart);
+    const { shippingAddress } = cart;
+
+    const [address, setAddress] = useState(shippingAddress.address);
+    const [city, setCity] = useState(shippingAddress.city);
+    const [postalCode, setPostalCode] = useState(shippingAddress.postalCode);
+    const [country, setCountry] = useState(shippingAddress.country);
 
     const submitHandler = (e) => {
         e.preventDefault();
-        console.log('submit');
+        dispatch(saveShippingAddress({address, city, postalCode, country}));
+        navigation('/payment');
     }
 
   return (
     <FormContainer>
+        <CheckoutProcess step1 />
         <h1>Shipping</h1>
         <Form onSubmit={submitHandler}>
             <Form.Group controlId='address'>
@@ -39,10 +46,10 @@ const ShipingScreen = () => {
                 <Form.Label>Country</Form.Label>
                 <Form.Control type='text' required placeholder='Enter country' value={country} onChange={(e) => setCountry(e.target.value)}></Form.Control>
             </Form.Group>
-            <Button type='submit' variant='dark'>Check out</Button>
+            <Button type='submit' variant='dark'>Continue</Button>
         </Form>
     </FormContainer>
   )
 }
 
-export default ShipingScreen
+export default ShippingScreen
