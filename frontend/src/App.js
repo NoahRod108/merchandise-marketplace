@@ -15,6 +15,9 @@ import PlaceOrderScreen from './screens/PlaceOrderScreen';
 import OrderScreen from './screens/OrderScreen';
 import ListUsersScreen from './screens/ListUsersScreen';
 import UserEditScreen from './screens/UserEditScreen';
+import ListProductsScreen from './screens/ListProductsScreen';
+import ProductEditScreen from './screens/ProductEditScreen';
+import ListOrdersScreen from './screens/ListOrdersScreen';
 
 const App = () => {
   return (
@@ -23,7 +26,7 @@ const App = () => {
             <Header />
             <main className="my-3">
                 <Container>
-                    <Routes>
+                    <Routes>                        
                         <Route path='/' element={<HomeScreen />} />
                         <Route path='/login' element={<LoginScreen />} />
                         <Route path='/profile' element={<ProfileScreen />} />
@@ -42,6 +45,14 @@ const App = () => {
                         <Route path='/admin/userlist' element={<ListUsersScreen />} />
                         <Route path='/admin/user'>
                             <Route path=':id/edit' element={<UserEditScreen />} />
+                        </Route>
+                        <Route path='/admin/productlist' element={<ListProductsScreen />} />
+                        <Route path='/admin/product'>
+                            <Route path=':id/edit' element={<ProductEditScreen />} />
+                        </Route>
+                        <Route path='/admin/orderlist' element={<ListOrdersScreen />} />
+                        <Route path='/search'>
+                            <Route path=':searchword' element={<HomeScreen />} />
                         </Route>
                     </Routes>
                 </Container>

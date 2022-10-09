@@ -59,6 +59,25 @@ const updateOrderPayment = asyncHandler( async (req, res) => {
     }
 })
 
+// Update delivered status
+// /api/orders/:id/delivered
+const updateOrderDelivered = asyncHandler( async (req, res) => {
+    const order = await Order.findById(req.params.id);
+
+    if(order){
+        order.isDelivered = true;
+        order.deliveredAt = Date.now();
+        
+        const updatedOrder = await order.save();
+
+        res.json(updatedOrder);
+    }else{
+        res.status(404);
+
+        throw new Error('Order not found');
+    }
+})
+
 // Get selected order
 // /api/orders/myorders
 const getSelectedOrder = asyncHandler( async (req, res) => {
@@ -67,6 +86,14 @@ const getSelectedOrder = asyncHandler( async (req, res) => {
     res.json(orders)
 })
 
+// Get all orders
+// /api/orders/myorders
+const getOrders = asyncHandler( async (req, res) => {
+    const orders = await Order.find({}).populate('user', 'id name');
+
+    res.json(orders)
+})
 
 
-export {addOrder, getOrder, updateOrderPayment, getSelectedOrder}
+
+export {addOrder, getOrder, updateOrderPayment, getSelectedOrder, getOrders, updateOrderDelivered}

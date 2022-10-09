@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux'
 import Product from './../components/Product';
 import { Row, Col } from 'react-bootstrap';
@@ -8,12 +9,16 @@ import Loader from '../components/Loader';
 
 const HomeScreen = () => {
     const dispatch = useDispatch();
+    const params = useParams();
+
+    const searchWord = params.searchword;
+
     const productList = useSelector(state => state.reducer.productList);
     const { loading, error, products } = productList;
 
     useEffect(() =>{
-        dispatch(listProducts());
-    }, [dispatch]);
+        searchWord === undefined ? dispatch(listProducts('')) : dispatch(listProducts(searchWord));
+    }, [dispatch, searchWord]);
 
   return (
     <>
