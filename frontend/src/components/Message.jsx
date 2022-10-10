@@ -17,6 +17,7 @@ const Message = ({ variant, children }) => {
   if (!show) {
     return null;
   }
+
   return (
     <Alert variant={variant}>
         {children}

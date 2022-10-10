@@ -32,8 +32,8 @@ const ProductScreen = () => {
             alert('Review has been submitted');
             setRating(0);
             setComment('');
-            dispatch({type: PRODUCT_CREATE_REVIEW_RESET});
         }
+        dispatch({type: PRODUCT_CREATE_REVIEW_RESET});
         dispatch(listProductDetails(params.id));
     }, [params, dispatch, success]);
 
