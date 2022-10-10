@@ -4,6 +4,9 @@ import asyncHandler from 'express-async-handler';
 // Fetch all products
 // /api/products
 const getProducts = asyncHandler( async (req, res) => {
+    const pageSize = 8;
+    const page = Number(req.query.pagenumber) || 1;
+
     const searchWord = req.query.searchword ? 
     { 
         name: {
@@ -12,9 +15,10 @@ const getProducts = asyncHandler( async (req, res) => {
         }
     } : {}
     
-    const products = await Product.find({...searchWord});
+    const count = await Product.countDocuments({...searchWord})
+    const products = await Product.find({...searchWord}).limit(pageSize).skip(pageSize * (page - 1));
 
-    res.json(products)
+    res.json({ products, page, pages: Math.ceil(count / pageSize) })
 })
 
 // Fetch single product
@@ -127,4 +131,12 @@ const createReview = asyncHandler( async (req, res) => {
 
 })
 
-export {getProducts, getProduct, deleteProduct, updateProduct, createProduct, createReview}
+// Get fetured products
+// /api/products/featured
+const getFeaturedProducts = asyncHandler( async (req, res) => {
+    const products = await Product.find({}).sort({rating: - 1}).limit(5);
+
+    res.json(products);
+})
+
+export {getProducts, getProduct, deleteProduct, updateProduct, createProduct, createReview, getFeaturedProducts}

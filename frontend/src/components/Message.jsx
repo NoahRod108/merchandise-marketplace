@@ -6,13 +6,13 @@ const Message = ({ variant, children }) => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setShow(false)
+      variant !== 'info' && setShow(false)
     }, 6000)
 
     return () => {
       clearTimeout(timer)
     }
-  }, []);
+  }, [variant]);
 
   if (!show) {
     return null;

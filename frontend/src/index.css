@@ -30,6 +30,38 @@ main{
     padding-right: 32px;
 }
 
+/* carousel */
+.carousel-item-next,
+.carousel-item-prev,
+.carousel-item-active{
+    display: flex;
+}
+
+.carousel{
+    margin: 20px 0;
+    text-align: center;
+}
+
+.carousel-caption {
+    position: absolute;
+    top: 0;
+}
+
+.carousel-caption h2 {
+    color: #fff
+}
+
+.carousel img {
+    height: 500px;
+    padding: 30px;
+    margin: 40px;
+    border-radius: 50%;
+}
+
+.carousel a {
+    margin: 0 auto;
+}
+
 /* products card */
 .rating{
     padding: 12px 0;

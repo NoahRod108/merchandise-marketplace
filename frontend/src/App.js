@@ -46,13 +46,20 @@ const App = () => {
                         <Route path='/admin/user'>
                             <Route path=':id/edit' element={<UserEditScreen />} />
                         </Route>
-                        <Route path='/admin/productlist' element={<ListProductsScreen />} />
+                        <Route path='/admin/productlist'>
+                            <Route path='page/:pagenumber' element={<ListProductsScreen />} />
+                            <Route path='' element={<ListProductsScreen />} />
+                        </Route>
                         <Route path='/admin/product'>
                             <Route path=':id/edit' element={<ProductEditScreen />} />
                         </Route>
                         <Route path='/admin/orderlist' element={<ListOrdersScreen />} />
                         <Route path='/search'>
                             <Route path=':searchword' element={<HomeScreen />} />
+                            <Route path=':searchword/page/pagenumber' element={<HomeScreen />} />
+                        </Route>
+                        <Route path='/page'>
+                            <Route path=':pagenumber' element={<HomeScreen />} />
                         </Route>
                     </Routes>
                 </Container>

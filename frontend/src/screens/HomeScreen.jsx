@@ -6,33 +6,40 @@ import { Row, Col } from 'react-bootstrap';
 import { listProducts } from '../actions/productActions';
 import Message from '../components/Message';
 import Loader from '../components/Loader';
+import Paginate from '../components/Paginate';
+import FeaturedCarousel from '../components/FeaturedCarousel';
 
 const HomeScreen = () => {
     const dispatch = useDispatch();
     const params = useParams();
 
     const searchWord = params.searchword;
+    const pageNumber = params.pagenumber || 1;
 
     const productList = useSelector(state => state.reducer.productList);
-    const { loading, error, products } = productList;
+    const { loading, error, products, page, pages } = productList;
 
     useEffect(() =>{
-        searchWord === undefined ? dispatch(listProducts('')) : dispatch(listProducts(searchWord));
-    }, [dispatch, searchWord]);
+        dispatch(listProducts(searchWord, pageNumber));
+    }, [dispatch, searchWord, pageNumber]);
 
   return (
     <>
+        {!searchWord && <FeaturedCarousel />}
         <h1>Latest Products</h1>
         {loading ? (<Loader />)
         : error ? (<Message variant='danger'>{error}</Message>)
         : (
-            <Row>
-                {products.map((product) => (
-                    <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
-                        <Product product={product} />
-                    </Col>
-                ))}
-            </Row>
+            <>
+                <Row>
+                    {products.map((product) => (
+                        <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
+                            <Product product={product} />
+                        </Col>
+                    ))}
+                </Row>
+                <Paginate pages={pages} page={page} searchWord={searchWord ? searchWord : ''}/>
+            </>
         )}
     </>
   )
