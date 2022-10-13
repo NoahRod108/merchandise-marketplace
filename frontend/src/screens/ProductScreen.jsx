@@ -160,7 +160,7 @@ const ProductScreen = () => {
                                         </Form.Group>
                                         <Button type='submit' variant='dark' className='rounded my-3'>Submit</Button>
                                     </Form>
-                                ) : <Message>Please <Link to='/login'>log in</Link> to leave a review</Message>}
+                                ) : <Message variant='info'>Please <Link to='/login'>log in</Link> to leave a review</Message>}
                             </ListGroup.Item>
                         </ListGroup>
                     </Col>

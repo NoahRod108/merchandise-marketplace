@@ -18,7 +18,7 @@ const Search = () => {
     }
 
   return (
-    <Form onSubmit={submitHandler} className='d-flex'>
+    <Form onSubmit={submitHandler} className='d-flex search-bar'>
         <Form.Control type='text' name='searchBox' placeholder='Search...' className='mr-sm-2 ml-sm-5' onChange={(e) => setSearchWord(e.target.value)}></Form.Control>
         <Button type='submit' varaint='outline-success p-2'>Search</Button>
     </Form>

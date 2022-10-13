@@ -18,13 +18,19 @@ import UserEditScreen from './screens/UserEditScreen';
 import ListProductsScreen from './screens/ListProductsScreen';
 import ProductEditScreen from './screens/ProductEditScreen';
 import ListOrdersScreen from './screens/ListOrdersScreen';
+import FeaturedCarousel from './components/FeaturedCarousel';
 
 const App = () => {
   return (
     <>
         <Router>
             <Header />
-            <main className="my-3">
+            <main>
+                <section id='carousel'>
+                    <Container fluid='true'>
+                        <FeaturedCarousel />
+                    </Container>
+                </section>
                 <Container>
                     <Routes>                        
                         <Route path='/' element={<HomeScreen />} />

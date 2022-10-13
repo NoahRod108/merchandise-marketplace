@@ -17,7 +17,7 @@ const Header = () => {
 
   return (
     <header>
-        <Navbar bg="dark" variant="dark" expand="lg">
+        <Navbar expand="lg">
             <Container>
                 <LinkContainer to='/'>
                     <Navbar.Brand href="/">Shop</Navbar.Brand>

@@ -27,7 +27,7 @@ const CarttScreen = () => {
         {
           cartItems.length === 0
           ? (
-            <Message>Cart is empty</Message>
+            <Message variant='info'>Cart is empty</Message>
           )
           : (
             <ListGroup variant='flush'>

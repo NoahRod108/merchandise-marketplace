@@ -7,7 +7,6 @@ import { listProducts } from '../actions/productActions';
 import Message from '../components/Message';
 import Loader from '../components/Loader';
 import Paginate from '../components/Paginate';
-import FeaturedCarousel from '../components/FeaturedCarousel';
 
 const HomeScreen = () => {
     const dispatch = useDispatch();
@@ -25,8 +24,7 @@ const HomeScreen = () => {
 
   return (
     <>
-        {!searchWord && <FeaturedCarousel />}
-        <h1>Latest Products</h1>
+        <h1 className='m-3'>Latest Products</h1>
         {loading ? (<Loader />)
         : error ? (<Message variant='danger'>{error}</Message>)
         : (
