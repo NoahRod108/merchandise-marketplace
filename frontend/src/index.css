@@ -1,8 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Creepster&display=swap');
+
 body {
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+    font-family: 'Creepster', cursive;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background: #000;
@@ -29,6 +29,7 @@ body {
 }
 
 .navbar a{
+    font-size: 1.4rem;
     color: #000;
 }
 
@@ -39,6 +40,10 @@ body {
 /* searchbar */
 .search-bar input{
     border-radius: 5px 0 0 5px;
+}
+
+.search-bar button{
+    border-radius: 0 5px 5px 0;
 }
 
 h1,h2{
