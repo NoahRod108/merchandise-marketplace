@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import { Button, Form } from 'react-bootstrap';
+import { Button, Form, Container } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import Message from '../components/Message';
 import Loader from '../components/Loader';
@@ -47,7 +47,7 @@ const UserEditScreen = () => {
     }
 
   return (
-    <>
+    <Container>
         <Link to='/admin/userlist' className='btn btn-light my-3'>Go Back</Link>
             <FormContainer>
             <h1>Edit User</h1>
@@ -70,7 +70,7 @@ const UserEditScreen = () => {
             </Form>
             )}
         </FormContainer>
-    </>
+    </Container>
   )
 }
 

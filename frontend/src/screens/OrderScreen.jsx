@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Row, Col, ListGroup, Image, Card, Button } from 'react-bootstrap';
+import { Row, Col, ListGroup, Image, Card, Button, Container } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import Message from '../components/Message';
 import { Navigate, useParams } from 'react-router-dom';
@@ -72,7 +72,7 @@ const OrderScreen = () => {
 
   return loading ? <Loader /> : 
     error ? <Message variant='danger'>{error}</Message> : 
-    <>
+    <Container>
         <h1>Order: {order._id}</h1>
         <Row>
             <Col md={8}>
@@ -95,7 +95,7 @@ const OrderScreen = () => {
                         {order.isDelivered ? (
                             <Message variant='success'>Delivered</Message>
                         ):(
-                            <Message variant='warning'>Not Delivered</Message>
+                            <Message variant='warning' timeout='show'>Not Delivered</Message>
                         )}
                     </ListGroup.Item>
                     {/* Payment Method */}
@@ -107,7 +107,7 @@ const OrderScreen = () => {
                             {order.isPaid ? (
                             <Message variant='success'>Paid on {order.paidAt}</Message>
                             ):(
-                                <Message variant='warning'>Not Paid</Message>
+                                <Message variant='warning' timeout='show'>Not Paid</Message>
                             )}
                     </ListGroup.Item>
                     {/* Items ordered */}
@@ -185,7 +185,7 @@ const OrderScreen = () => {
                 </Card>
             </Col>
         </Row>
-    </>
+    </Container>
 }
 
 export default OrderScreen

@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Creepster&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mystery+Quest&display=swap');
 
 body {
     margin: 0;
-    font-family: 'Creepster', cursive;
+    font-family: 'Mystery Quest', cursive;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background: #000;
@@ -12,6 +12,7 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    letter-spacing: .2rem;
 }
 
 /* navbar */
@@ -26,6 +27,11 @@ body {
 .navbar{
     background-color: #ff881b;
     margin-bottom: 12px;
+}
+
+.navbar-nav .show .dropdown-menu a:hover{
+    background-color: #1a1a1a;
+    color: #fff;
 }
 
 .navbar a{
@@ -56,7 +62,7 @@ main{
 
 /* product cards */
 .card{
-    background-color: rgb(130,73,188);
+    background-color: #8249bc;
 }
 
 .card .card-body{
@@ -64,7 +70,7 @@ main{
 }
 
 .home--product{
-    background-color: rgb(130,73,188);
+    background-color: #8249bc;
     cursor: pointer;
     transition: all ease 200ms;
     min-width: 100%;
@@ -124,7 +130,7 @@ main{
     width: 100%;
   }
 
-/* products card */
+
 .rating{
     padding: 12px 0;
 }
@@ -133,10 +139,40 @@ main{
     color: rgb(220, 220, 0);
 }
 
+
 .cart--items{
     padding: 1rem;
 }
 
 .cart--items .row [class^='col']{
     margin: auto;
+}
+
+/* product screen */
+.product-container .list-group-item{
+    background-color: #a8a8a8;
+    font-weight: 600;
+}
+
+.product-container img{
+    margin-bottom: 32px;
+}
+
+/* profile screen */
+.profile-update-form h2, .profile-order-table h2{
+    margin: 24px 0;
+}
+
+.profile-update-form form div{
+    margin-bottom: 24px;
+    color: #fff;
+}
+
+.profile-update-form form div input{
+    font-weight: 600;
+}
+
+.profile-order-table table, .profile-order-table table tbody tr td{
+    background-color: #a8a8a8;
+    color: #000;
 }

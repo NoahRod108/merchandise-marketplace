@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Alert } from 'react-bootstrap';
 
-const Message = ({ variant, children }) => {
+const Message = ({ variant, children, timeout }) => {
   const [show, setShow] = useState(true)
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      variant !== 'info' && setShow(false)
+        timeout !== 'show' && setShow(false)
     }, 6000)
 
     return () => {

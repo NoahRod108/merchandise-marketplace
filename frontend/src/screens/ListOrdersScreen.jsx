@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Button, Table} from 'react-bootstrap';
+import { Button, Table, Container} from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { LinkContainer } from 'react-router-bootstrap';
@@ -26,7 +26,7 @@ const ListOrdersScreen = () => {
     },[dispatch, navigate, userInfo])
 
   return (
-    <>
+    <Container>
         {loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> : (
             <Table striped bordered hover responsive className='table-sm'>
                 <thead>
@@ -58,7 +58,7 @@ const ListOrdersScreen = () => {
                 </tbody>
             </Table>
         )}
-    </>
+    </Container>
   )
 }
 

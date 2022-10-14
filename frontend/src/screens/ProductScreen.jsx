@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom'
-import { Row, Col, Image, ListGroup, Card, Button, Form } from 'react-bootstrap'
+import { Row, Col, Image, ListGroup, Card, Button, Form, Container } from 'react-bootstrap'
 import Rating from './../components/Rating';
 import { useDispatch, useSelector } from 'react-redux';
 import { listProductDetails, createReviewProduct } from '../actions/productActions';
@@ -48,7 +48,7 @@ const ProductScreen = () => {
     }
 
   return (
-    <>
+    <Container className='product-container'>
         <Link className='btn btn-dark my-3' to='/'>Go Back</Link>
         {loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> : (
             <>
@@ -65,7 +65,7 @@ const ProductScreen = () => {
                                 <Rating value={product.rating} text={`${product.numReviews} reviews`} />
                             </ListGroup.Item>
                             <ListGroup.Item>
-                                Price: {product.price}
+                                Price: ${product.price}
                             </ListGroup.Item>
                             <ListGroup.Item>
                                 {product.description}
@@ -128,7 +128,7 @@ const ProductScreen = () => {
                 <Row>
                     <Col md={6}>
                         <h2>Reviews</h2>
-                        {product.reviews.length === 0 && <Message variant='info'>There are no reviews for this product</Message>}
+                        {product.reviews.length === 0 && <Message variant='info' timeout='show'>There are no reviews for this product</Message>}
                         <ListGroup variant='flush'>
                             {product.reviews.map(review => (
                                 <ListGroup.Item key={review._id}>
@@ -160,14 +160,14 @@ const ProductScreen = () => {
                                         </Form.Group>
                                         <Button type='submit' variant='dark' className='rounded my-3'>Submit</Button>
                                     </Form>
-                                ) : <Message variant='info'>Please <Link to='/login'>log in</Link> to leave a review</Message>}
+                                ) : <Message variant='info' timeout='show'>Please <Link to='/login'>log in</Link> to leave a review</Message>}
                             </ListGroup.Item>
                         </ListGroup>
                     </Col>
                 </Row>
             </>
         )}
-    </>
+    </Container>
   )
 }
 

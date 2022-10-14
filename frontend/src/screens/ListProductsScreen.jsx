@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Button, Table, Row, Col } from 'react-bootstrap';
+import { Button, Table, Row, Col, Container } from 'react-bootstrap';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { LinkContainer } from 'react-router-bootstrap';
@@ -53,7 +53,7 @@ const ListProductsScreen = () => {
     }
 
   return (
-    <>
+    <Container>
         <Row className='align-items-center'>
             <Col>
                 <h1>List of Products</h1>
@@ -103,7 +103,7 @@ const ListProductsScreen = () => {
                 <Paginate pages={pages} page={page} admin={true} />
             </>
         )}
-    </>
+    </Container>
   )
 }
 

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Container } from 'react-bootstrap'
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { Button, Form } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
@@ -8,7 +9,6 @@ import Loader from '../components/Loader';
 import FormContainer from '../components/FormContainer';
 import { listProductDetails, updateProduct } from '../actions/productActions';
 import { PRODUCT_DETAILS_RESET, PRODUCT_UPDATE_RESET } from '../constants/productConstants';
-// import { USER_ADMIN_UPDATE_RESET } from '../constants/userConstants';
 
 const ProductEditScreen = () => {
     const [name, setName] = useState('');
@@ -89,7 +89,7 @@ const ProductEditScreen = () => {
     }
 
   return (
-    <>
+    <Container>
         <Link to='/admin/productlist' className='rounded btn btn-light my-3'>Go Back</Link>
             <FormContainer>
             <h1>Edit Product</h1>
@@ -132,7 +132,7 @@ const ProductEditScreen = () => {
             </Form>
             )}
         </FormContainer>
-    </>
+    </Container>
   )
 }
 
