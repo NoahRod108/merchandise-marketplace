@@ -25,7 +25,7 @@ const HomeScreen = () => {
 
   return (
     <>
-    <FeaturedCarousel />
+    {!searchWord && <FeaturedCarousel />}
     <Container>
         <h1 className='m-3'>Latest Products</h1>
         {loading ? (<Loader />)

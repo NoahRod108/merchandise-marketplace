@@ -49,7 +49,7 @@ const ProductScreen = () => {
 
   return (
     <Container className='product-container'>
-        <Link className='btn btn-dark my-3' to='/'>Go Back</Link>
+        <Link className='btn rounded btn-dark my-3' to='/'>Go Back</Link>
         {loading ? <Loader /> : error ? <Message variant='danger'>{error}</Message> : (
             <>
                 <Row>
@@ -103,14 +103,9 @@ const ProductScreen = () => {
                                                 Quantity:
                                             </Col>
                                             <Col>
-                                                <Form.Select value={qty} onChange={(e) => 
-                                                    setQty(e.target.value)}>
-                                                        {
-                                                            [...Array(product.countInStock).keys()].map(x => (
-                                                                <option key={x + 1} value={x + 1}>{x + 1}</option>
-                                                            ))
-                                                        }  
-                                                </Form.Select>
+                                                <Button className="btn-sm rounded" onClick={() => setQty(qty - 1)}>-</Button>
+                                                <Form.Control type='text' readOnly value={qty}></Form.Control>
+                                                <Button className="btn-sm rounded" onClick={() => setQty(qty + 1)}>+</Button>
                                             </Col>
                                         </Row>
                                     </ListGroup.Item>
