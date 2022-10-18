@@ -93,7 +93,7 @@ const OrderScreen = () => {
                             {order.shippingAddress.address}, {order.shippingAddress.city}, {order.shippingAddress.postalCode}, {order.shippingAddress.country}
                         </p>
                         {order.isDelivered ? (
-                            <Message variant='success'>Delivered</Message>
+                            <Message variant='success' timeout='show'>Delivered</Message>
                         ):(
                             <Message variant='warning' timeout='show'>Not Delivered</Message>
                         )}
@@ -105,31 +105,44 @@ const OrderScreen = () => {
                             {order.payment}
 
                             {order.isPaid ? (
-                            <Message variant='success'>Paid on {order.paidAt}</Message>
+                            <Message variant='success' timeout='show'>Paid on {order.paidAt}</Message>
                             ):(
                                 <Message variant='warning' timeout='show'>Not Paid</Message>
                             )}
                     </ListGroup.Item>
                     {/* Items ordered */}
                     <ListGroup.Item>
-                        <h2>Your Order</h2>
+                        <h2 style={{marginBottom: "12px"}}>Your Order</h2>
                         <ListGroup variant='flush'>
+                            <Row style={{textAlign: "center"}}>
+                                <Col md={2}>
+                                </Col>
+                                <Col md={4}>
+                                    Name
+                                </Col>
+                                <Col md={4}>
+                                    Price
+                                </Col>
+                                <Col md={2}>
+                                    Quantity
+                                </Col>
+                            </Row>
                             {order.orderItems.map(item => 
                                 <ListGroup.Item key={item.product} className='cart--items'>
-                                <Row>
-                                    <Col md={2}>
-                                    <Image src={item.image} fluid rounded />
-                                    </Col>
-                                    <Col md={4}>
-                                    {item.name}
-                                    </Col>
-                                    <Col md={4}>
-                                    ${item.price}
-                                    </Col>
-                                    <Col md={2}>
-                                    {item.quantity}
-                                    </Col>
-                                </Row>
+                                    <Row style={{textAlign: "center"}}>
+                                        <Col md={2}>
+                                        <Image src={item.image} fluid rounded />
+                                        </Col>
+                                        <Col md={4}>
+                                        {item.name}
+                                        </Col>
+                                        <Col md={4}>
+                                        ${item.price}
+                                        </Col>
+                                        <Col md={2}>
+                                        {item.quantity}
+                                        </Col>
+                                    </Row>
                                 </ListGroup.Item>    
                             )}
                         </ListGroup>

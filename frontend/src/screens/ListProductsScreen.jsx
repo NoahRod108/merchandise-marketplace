@@ -59,7 +59,7 @@ const ListProductsScreen = () => {
                 <h1>List of Products</h1>
             </Col>
             <Col style={{textAlign: "right"}}>
-                <Button className='my-3 rounded' onClick={createProductHandler}>
+                <Button className='my-3 rounded' variant='dark' onClick={createProductHandler}>
                     <i className='fas fa-plus'></i> Create Product
                 </Button>
             </Col>
@@ -77,6 +77,7 @@ const ListProductsScreen = () => {
                             <th>Price</th>
                             <th>Category</th>
                             <th>Brand</th>
+                            <th>Quantity</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -88,6 +89,7 @@ const ListProductsScreen = () => {
                                 <td>${product.price}</td>
                                 <td>{product.category}</td>
                                 <td>{product.brand}</td>
+                                <td style={{textAlign: "center"}}>{product.countInStock}</td>
                                 <td>
                                     <LinkContainer to={`/admin/product/${product._id}/edit`}>
                                         <Button variant='dark' className='rounded'><i className='fas fa-edit'></i></Button>

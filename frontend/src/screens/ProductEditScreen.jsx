@@ -90,7 +90,7 @@ const ProductEditScreen = () => {
 
   return (
     <Container>
-        <Link to='/admin/productlist' className='rounded btn btn-light my-3'>Go Back</Link>
+        <Link to='/admin/productlist' className='rounded btn btn-dark my-3'>Go Back</Link>
             <FormContainer>
             <h1>Edit Product</h1>
             {loadingUpdate && <Loader />}
@@ -128,7 +128,7 @@ const ProductEditScreen = () => {
                     <Form.Label>Description</Form.Label>
                     <Form.Control type='text' label='Enter description' value={description} onChange={(e) => setDescription(e.target.value)}></Form.Control>
                 </Form.Group>
-                <Button type='submit' variant='primary'>Update</Button>
+                <Button type='submit' className='rounded my-3' variant='dark'>Update</Button>
             </Form>
             )}
         </FormContainer>

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams, useNavigate } from 'react-router-dom'
-import { Row, Col, Image, ListGroup, Card, Button, Form, Container } from 'react-bootstrap'
+import { Row, Col, Image, ListGroup, Button, Form, Container } from 'react-bootstrap'
 import Rating from './../components/Rating';
 import { useDispatch, useSelector } from 'react-redux';
 import { listProductDetails, createReviewProduct } from '../actions/productActions';
@@ -56,7 +56,7 @@ const ProductScreen = () => {
                     <Col md={6}>
                         <Image src={product.image} fluid/>
                     </Col>
-                    <Col md={3}>
+                    <Col md={6}>
                         <ListGroup variant='flush'>
                             <ListGroup.Item>
                                 <h3>{product.name}</h3>
@@ -71,53 +71,69 @@ const ProductScreen = () => {
                                 {product.description}
                             </ListGroup.Item>
                         </ListGroup>
-                    </Col>
-                    <Col md={3}>
-                        <Card>
-                            <ListGroup variant='flush'>
-                                <ListGroup.Item>
-                                    <Row>
-                                        <Col>
-                                            Price:
-                                        </Col>
-                                        <Col>
-                                            <strong>${product.price}</strong>
-                                        </Col>
-                                    </Row>
-                                </ListGroup.Item>
-                                <ListGroup.Item>
-                                    <Row>
-                                        <Col>
-                                            Status:
-                                        </Col>
-                                        <Col>
-                                            <strong className={product.countInStock === 0 ? 'text-danger' : undefined}>{product.countInStock > 0 ? 'In Stock' : 'Out of Stock'}</strong>
-                                        </Col>
-                                    </Row>
-                                </ListGroup.Item>
-                                
-                                {product.countInStock > 0 && (
-                                    <ListGroup.Item>
-                                        <Row>
-                                            <Col>
-                                                Quantity:
-                                            </Col>
-                                            <Col>
-                                                <Button className="btn-sm rounded" onClick={() => setQty(qty - 1)}>-</Button>
-                                                <Form.Control type='text' readOnly value={qty}></Form.Control>
-                                                <Button className="btn-sm rounded" onClick={() => setQty(qty + 1)}>+</Button>
-                                            </Col>
-                                        </Row>
-                                    </ListGroup.Item>
-                                )}
 
+                        <ListGroup variant='flush'>
+                            <ListGroup.Item>
+                                <Row>
+                                    <Col>
+                                        Price:
+                                    </Col>
+                                    <Col>
+                                        <strong>${product.price}</strong>
+                                    </Col>
+                                </Row>
+                            </ListGroup.Item>
+                            <ListGroup.Item>
+                                <Row>
+                                    <Col>
+                                        Status:
+                                    </Col>
+                                    <Col>
+                                        <strong className={product.countInStock <= 10 ? 'text-danger' : undefined}>
+                                        {
+                                            product.countInStock > 0 ? 
+                                            product.countInStock <= 10 ? `In Stock (${product.countInStock}) Left` : 'In Stock' : 'Out of Stock'
+                                        }
+                                        </strong>
+                                    </Col>
+                                </Row>
+                            </ListGroup.Item>
+                            
+                            {product.countInStock > 0 && (
                                 <ListGroup.Item>
-                                    <Row className='m-1'>
-                                        <Button className='rounded' variant='dark' type='button' disabled={product.countInStock === 0} onClick={addToCartHandler}>Add to Cart</Button>
+                                    <Row>
+                                        <Col>
+                                            Quantity:
+                                        </Col>
+                                        <Col className='d-flex'>
+                                            <Button className="btn-sm rounded" onClick={() => 
+                                                {
+                                                    if(qty > 1){
+                                                        setQty(qty - 1)
+                                                    }
+                                                }    
+                                            }
+                                            >-</Button>
+                                            <Form.Control style={{width: "30%", margin: "0 8px"}} type='text' readOnly value={qty}></Form.Control>
+                                            <Button className="btn-sm rounded" onClick={() => 
+                                                {
+                                                    if(qty < product.countInStock){
+                                                        setQty(qty + 1)
+                                                    }
+                                                }    
+                                            }
+                                            >+</Button>
+                                        </Col>
                                     </Row>
                                 </ListGroup.Item>
-                            </ListGroup>
-                        </Card>
+                            )}
+
+                            <ListGroup.Item>
+                                <Row className='m-1'>
+                                    <Button className='rounded' variant='dark' type='button' disabled={product.countInStock === 0} onClick={addToCartHandler}>Add to Cart</Button>
+                                </Row>
+                            </ListGroup.Item>
+                        </ListGroup>
                     </Col>
                 </Row>
                 <Row>

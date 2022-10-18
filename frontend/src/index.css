@@ -149,7 +149,7 @@ main{
 }
 
 /* product screen */
-.product-container .list-group-item{
+.list-group-item{
     background-color: #a8a8a8;
     font-weight: 600;
 }
@@ -163,16 +163,24 @@ main{
     margin: 24px 0;
 }
 
-.profile-update-form form div{
+form div{
     margin-bottom: 24px;
     color: #fff;
 }
 
-.profile-update-form form div input{
+form div input{
     font-weight: 600;
 }
 
-.profile-order-table table, .profile-order-table table tbody tr td{
+table, table tbody tr td{
     background-color: #a8a8a8;
+    color: #000;
+}
+
+table tbody tr td a{
+    margin-right: 12px;
+}
+
+.table-striped>tbody>tr:nth-of-type(odd)>*{
     color: #000;
 }

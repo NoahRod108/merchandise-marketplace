@@ -48,7 +48,7 @@ const UserEditScreen = () => {
 
   return (
     <Container>
-        <Link to='/admin/userlist' className='btn btn-light my-3'>Go Back</Link>
+        <Link to='/admin/userlist' className='btn btn-dark my-3 rounded'>Go Back</Link>
             <FormContainer>
             <h1>Edit User</h1>
             {loadingUpdate && <Loader />}
@@ -66,7 +66,7 @@ const UserEditScreen = () => {
                 <Form.Group controlId='isadmin'>
                     <Form.Check type='checkbox' label='Is Admin' checked={isAdmin} onChange={(e) => setIsAdmin(e.target.checked)}></Form.Check>
                 </Form.Group>
-                <Button type='submit' variant='primary'>Update</Button>
+                <Button type='submit' className='rounded my-3' variant='dark'>Update</Button>
             </Form>
             )}
         </FormContainer>
