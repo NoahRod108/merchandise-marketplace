@@ -56,6 +56,10 @@ h1,h2{
     color: #ff881b;
 }
 
+h1{
+    margin: 24px 0;
+}
+
 main{
     min-height: 80vh;
 }

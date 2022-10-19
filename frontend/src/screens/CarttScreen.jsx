@@ -41,21 +41,32 @@ const CarttScreen = () => {
                         <Col md={3}>
                         <Link to={`/product/${item.product}`} style={{textDecoration:'none'}}>{item.name}</Link>
                         </Col>
-                        <Col md={2}>
-                        ${item.price}
+                        <Col md={1}>
+                            ${item.price}
                         </Col>
-                        <Col>
-                        <Form.Select value={item.quantity} onChange={(e) => 
-                            dispatch(addToCart(item.product, Number(e.target.value)))}>
-                            {
-                            [...Array(item.countInStock).keys()].map(x => (
-                                <option key={x + 1} value={x + 1}>{x + 1}</option>
-                            ))
-                            }  
-                        </Form.Select>
+                        <Col md={4}>
+                            <Col className='d-flex'>
+                                <Button className="btn-sm rounded" onClick={() => 
+                                    {
+                                        if(item.quantity > 1){
+                                            dispatch(addToCart(item.product, Number(item.quantity - 1)));
+                                        }
+                                    }    
+                                }
+                                >-</Button>
+                                <Form.Control style={{width: "30%", margin: "0 8px"}} type='text' readOnly value={item.quantity}></Form.Control>
+                                <Button className="btn-sm rounded" onClick={() => 
+                                    {
+                                        if(item.quantity < item.countInStock){
+                                            dispatch(addToCart(item.product, Number(item.quantity + 1)));
+                                        }
+                                    }    
+                                }
+                                >+</Button>
+                            </Col>
                         </Col>
                         <Col md={2}>
-                            <Button type='button' className='rounded' variant='light' disabled={item.countInStock === 0} onClick={() => removeFromCartHandler(item.product)}>
+                            <Button type='button' className='rounded my-3' variant='dark' disabled={item.countInStock === 0} onClick={() => removeFromCartHandler(item.product)}>
                             <i className='fas fa-trash'></i>
                             </Button>
                         </Col>
@@ -75,7 +86,7 @@ const CarttScreen = () => {
                     </ListGroup.Item>
                     <ListGroup.Item>
                         <Row className='m-1'>
-                            <Button className='rounded' variant='dark' type='button' disabled={cartItems.length === 0} onClick={checkoutHandler}>Checkout</Button>
+                            <Button className='rounded my-3' variant='dark' type='button' disabled={cartItems.length === 0} onClick={checkoutHandler}>Checkout</Button>
                         </Row>
                     </ListGroup.Item>
                 </ListGroup>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -14,6 +14,9 @@ const ShippingScreen = () => {
     const cart = useSelector((state) => state.reducer.cart);
     const { shippingAddress } = cart;
 
+    const userLogin = useSelector(state => state.reducer.userLogin);
+    const { userInfo } = userLogin;
+
     const [address, setAddress] = useState(shippingAddress.address);
     const [city, setCity] = useState(shippingAddress.city);
     const [postalCode, setPostalCode] = useState(shippingAddress.postalCode);
@@ -24,6 +27,12 @@ const ShippingScreen = () => {
         dispatch(saveShippingAddress({address, city, postalCode, country}));
         navigation('/payment');
     }
+
+    useEffect(() =>{
+        if(!userInfo){
+            navigation('/login');
+        }
+    }, [userInfo, navigation])
 
   return (
     <FormContainer>
