@@ -18,6 +18,9 @@ const ProductScreen = () => {
     const [rating, setRating] = useState(0);
     const [comment, setComment] = useState('');
     
+    const cart = useSelector((state) => state.reducer.cart);
+    const { cartItems } = cart;
+
     const productDetails = useSelector(state => state.reducer.productDetails);
     const { loading, error, product } = productDetails;
 
@@ -35,7 +38,7 @@ const ProductScreen = () => {
         }
         dispatch({type: PRODUCT_CREATE_REVIEW_RESET});
         dispatch(listProductDetails(params.id));
-    }, [params, dispatch, success]);
+    }, [params, dispatch, success, cartItems]);
 
     const addToCartHandler = () => {
         dispatch(addToCart(params.id, qty))

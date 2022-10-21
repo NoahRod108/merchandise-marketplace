@@ -256,3 +256,35 @@ export const userAdminUpdate = (user) => async(dispatch, getState) =>{
         })
     }
 }
+
+export const userUpdateCart = (cart) => async(dispatch, getState) =>{
+    try {
+        dispatch({
+            type: 'USER_CART_UPDATE_REQUEST'
+        })
+
+        const { reducer: { userLogin: { userInfo }}} = getState()
+
+        const config = {
+            headers:{
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${userInfo.token}`,
+            },
+        }
+
+        const { data } = await axios.put(`/api/users/cartItems`, {userInfo, cart}, config);
+
+        dispatch({
+            type: 'USER_CART_UPDATE_SUCCESS',
+            payload: data,
+        })
+
+    } catch (error) {
+        dispatch({
+            type: 'USER_CART_UPDATE_FAIL',
+            payload: error.response && error.response.data.message 
+            ? error.response.data.message 
+            : error.message,
+        })
+    }
+}

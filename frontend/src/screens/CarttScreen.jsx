@@ -1,9 +1,10 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { Link, useNavigate } from 'react-router-dom'
 import { Row, Col, Image, ListGroup, Card, Button, Form, Container } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux';
 import Message from '../components/Message';
 import { addToCart, removeFromCart } from './../actions/cartActions';
+import { userUpdateCart } from '../actions/userActions';
 
 const CarttScreen = () => {
     const navigate = useNavigate();
@@ -19,6 +20,10 @@ const CarttScreen = () => {
     const checkoutHandler = () => {
         navigate('/login/?redirect=/shipping');
     }
+
+    useEffect(() => {
+        dispatch(userUpdateCart(cartItems));
+    },[cartItems, dispatch])
 
   return (
     <Container>

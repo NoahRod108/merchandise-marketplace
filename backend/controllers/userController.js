@@ -172,23 +172,22 @@ const updateUser = asyncHandler( async (req, res) => {
 })
 
 const updateCart = asyncHandler( async (req, res) => {
-    const user = await User.findById(req.params.id);
+    console.log(req.body);
+    // const user = await User.findById(req.params.id);
 
-    if(user){
-        user.cartItems = req.body.cartItems || user.cartItems;
+    // if(user){
+    //     user.cartItems = req.body.cartItems || user.cartItems;
         
-        const updatedUser = await user.save();
+    //     const updatedUser = await user.save();
 
-        res.json({
-            _id: updatedUser._id,
-            name: updatedUser.name,
-            email: updatedUser.email,
-            isAdmin: updatedUser.isAdmin,
-        })
-    }else{
-        res.status(404);
-        throw new Error('User not found');
-    }
+    //     res.json({
+    //         _id: updatedUser._id,
+    //         cartItems: updatedUser.cartItems,
+    //     })
+    // }else{
+    //     res.status(404);
+    //     throw new Error('User not found');
+    // }
 })
 
 export {authUser, getProfile, createUser, updateProfile, getUsers, deleteUser, updateUser, getUser, updateCart}
