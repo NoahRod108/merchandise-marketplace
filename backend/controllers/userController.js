@@ -19,6 +19,7 @@ const authUser = asyncHandler( async (req, res) => {
             name: user.name,
             email: user.email,
             isAdmin: user.isAdmin,
+            cartItems: user.cartItems,
             token: generateToken(user._id),
         })
     }else{
@@ -172,22 +173,21 @@ const updateUser = asyncHandler( async (req, res) => {
 })
 
 const updateCart = asyncHandler( async (req, res) => {
-    console.log(req.body);
-    // const user = await User.findById(req.params.id);
+    const user = await User.findById(req.body.userInfo._id);
 
-    // if(user){
-    //     user.cartItems = req.body.cartItems || user.cartItems;
+    if(user){
+        user.cartItems = req.body.cart || user.cartItems;
         
-    //     const updatedUser = await user.save();
+        const updatedUser = await user.save();
 
-    //     res.json({
-    //         _id: updatedUser._id,
-    //         cartItems: updatedUser.cartItems,
-    //     })
-    // }else{
-    //     res.status(404);
-    //     throw new Error('User not found');
-    // }
+        res.json({
+            _id: updatedUser._id,
+            cartItems: updatedUser.cartItems,
+        })
+    }else{
+        res.status(404);
+        throw new Error('User not found');
+    }
 })
 
 export {authUser, getProfile, createUser, updateProfile, getUsers, deleteUser, updateUser, getUser, updateCart}
