@@ -10,21 +10,17 @@ const CarttScreen = () => {
     (() => {
         if (window.localStorage) {
 
-            // If there is no item as 'reload'
-            // in localstorage then create one &
-            // reload the page
+            // If there is no item as 'reload' create one
             if (!localStorage.getItem('reload')) {
                 localStorage['reload'] = true;
                 window.location.reload();
             } else {
 
-                // If there exists a 'reload' item
-                // then clear the 'reload' item in
-                // local storage
+                // If there exists a 'reload' clear the 'reload'
                 localStorage.removeItem('reload');
             }
         }
-    })(); // Calling anonymous function here only
+    })(); // Calling function
     const navigate = useNavigate();
     const dispatch = useDispatch();
 

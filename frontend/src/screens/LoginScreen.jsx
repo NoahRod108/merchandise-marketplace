@@ -46,12 +46,12 @@ const LoginScreen = () => {
                 <Form.Label>Password</Form.Label>
                 <Form.Control type='password' placeholder='Enter password' value={password} onChange={(e) => setPassword(e.target.value)}></Form.Control>
             </Form.Group>
-            <Button type='submit' variant='primary'>Sign In</Button>
+            <Button type='submit' className="rounded my-3" variant='dark'>Sign In</Button>
         </Form>
 
-        <Row className='py-3'>
+        <Row className='py-3' style={{color: "#fff"}}>
             <Col>
-                New User? <Link to={redirect ? `/register?redirect=${redirect}`: '/register'}>Register</Link>
+                New User? <Link style={{color: "#ff881b"}} to={redirect ? `/register?redirect=${redirect}`: '/register'}>Register</Link>
             </Col>
         </Row>
     </FormContainer>

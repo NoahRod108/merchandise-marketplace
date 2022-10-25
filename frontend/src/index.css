@@ -188,3 +188,13 @@ table tbody tr td a{
 .table-striped>tbody>tr:nth-of-type(odd)>*{
     color: #000;
 }
+
+/* payment process */
+.payment-process .nav-item a{
+    color: #fff;
+}
+
+/* payment process */
+.payment-process .nav-item .active{
+    color: #919191;
+}
