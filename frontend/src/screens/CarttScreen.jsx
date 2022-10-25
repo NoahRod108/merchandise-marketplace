@@ -7,11 +7,38 @@ import { addToCart, removeFromCart } from './../actions/cartActions';
 import { userUpdateCart } from '../actions/userActions';
 
 const CarttScreen = () => {
+    (() => {
+        if (window.localStorage) {
+
+            // If there is no item as 'reload'
+            // in localstorage then create one &
+            // reload the page
+            if (!localStorage.getItem('reload')) {
+                localStorage['reload'] = true;
+                window.location.reload();
+            } else {
+
+                // If there exists a 'reload' item
+                // then clear the 'reload' item in
+                // local storage
+                localStorage.removeItem('reload');
+            }
+        }
+    })(); // Calling anonymous function here only
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
+    const userLogin = useSelector(state => state.reducer.userLogin);
+    const { userInfo } = userLogin;
+    
     const cart = useSelector((state) => state.reducer.cart);
     const { cartItems } = cart;
+
+    if(cartItems.length === 0){
+        localStorage.setItem('cartItems', JSON.stringify(userInfo.cartItems));
+        dispatch(userUpdateCart(userInfo.cartItems));
+        window.location.reload();
+    }
 
     const removeFromCartHandler = (id) => {
       dispatch(removeFromCart(id));
@@ -22,8 +49,11 @@ const CarttScreen = () => {
     }
 
     useEffect(() => {
+        if(!userInfo){
+            navigate('/');
+        }
         dispatch(userUpdateCart(cartItems));
-    },[cartItems, dispatch])
+    },[cartItems, dispatch, navigate, userInfo])
 
   return (
     <Container>

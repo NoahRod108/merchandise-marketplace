@@ -280,11 +280,6 @@ export const userUpdateCart = (cart) => async(dispatch, getState) =>{
             payload: data,
         })
 
-        dispatch({
-            type: USER_DETAILS_SUCCESS,
-            payload: data,
-        })
-
     } catch (error) {
         dispatch({
             type: 'USER_CART_UPDATE_FAIL',
