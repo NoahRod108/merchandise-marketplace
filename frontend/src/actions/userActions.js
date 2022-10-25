@@ -35,6 +35,7 @@ export const login = (email, password) => async(dispatch) =>{
 
 export const logout = () => (dispatch) => {
     localStorage.removeItem('userInfo');
+    localStorage.removeItem('cartItems');
     
     dispatch({
         type: USER_LOGOUT,
@@ -272,10 +273,15 @@ export const userUpdateCart = (cart) => async(dispatch, getState) =>{
             },
         }
 
-        const { data } = await axios.put(`/api/users/cartItems`, {userInfo, cart}, config);
+        const { data } = await axios.put(`/api/users/cartItems`, cart, config);
 
         dispatch({
             type: 'USER_CART_UPDATE_SUCCESS',
+            payload: data,
+        })
+
+        dispatch({
+            type: USER_DETAILS_SUCCESS,
             payload: data,
         })
 

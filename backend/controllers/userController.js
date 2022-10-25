@@ -71,6 +71,7 @@ const getProfile = asyncHandler( async (req, res) => {
             _id: user._id,
             name: user.name,
             email: user.email,
+            cartItems: user.cartItems,
             isAdmin: user.isAdmin,
         })
     }else{
@@ -173,10 +174,10 @@ const updateUser = asyncHandler( async (req, res) => {
 })
 
 const updateCart = asyncHandler( async (req, res) => {
-    const user = await User.findById(req.body.userInfo._id);
+    const user = req.user
 
     if(user){
-        user.cartItems = req.body.cart || user.cartItems;
+        user.cartItems = req.body || user.cartItems;
         
         const updatedUser = await user.save();
 

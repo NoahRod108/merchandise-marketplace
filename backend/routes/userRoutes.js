@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.post('/login', authUser);
 
-router.route('/cartItems').put(updateCart);
+router.route('/cartItems').put(protect, updateCart);
 
 router.route('/profile').get(protect, getProfile).put(protect, updateProfile);
 
