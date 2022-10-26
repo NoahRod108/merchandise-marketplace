@@ -55,7 +55,7 @@ const ShippingScreen = () => {
                 <Form.Label>Country</Form.Label>
                 <Form.Control type='text' required placeholder='Enter country' value={country} onChange={(e) => setCountry(e.target.value)}></Form.Control>
             </Form.Group>
-            <Button type='submit' variant='dark'>Continue</Button>
+            <Button type='submit' className='rounded my-3' variant='dark'>Continue</Button>
         </Form>
     </FormContainer>
   )

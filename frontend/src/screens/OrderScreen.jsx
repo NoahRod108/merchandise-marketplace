@@ -26,7 +26,6 @@ const OrderScreen = () => {
     const userLogin = useSelector(state => state.reducer.userLogin);
     const { userInfo } = userLogin;
 
-
     if(!loading){
         order.itemPrice = order.orderItems.reduce((acc, item) => acc + item.price * item.quantity, 0)
     }

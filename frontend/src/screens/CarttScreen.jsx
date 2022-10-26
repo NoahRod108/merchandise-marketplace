@@ -7,20 +7,6 @@ import { addToCart, removeFromCart } from './../actions/cartActions';
 import { userUpdateCart } from '../actions/userActions';
 
 const CarttScreen = () => {
-    (() => {
-        if (window.localStorage) {
-
-            // If there is no item as 'reload' create one
-            if (!localStorage.getItem('reload')) {
-                localStorage['reload'] = true;
-                window.location.reload();
-            } else {
-
-                // If there exists a 'reload' clear the 'reload'
-                localStorage.removeItem('reload');
-            }
-        }
-    })(); // Calling function
     const navigate = useNavigate();
     const dispatch = useDispatch();
 

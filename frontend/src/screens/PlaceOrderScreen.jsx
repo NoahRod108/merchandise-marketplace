@@ -40,7 +40,6 @@ const PlaceOrderScreen = () => {
         if(success){
             navigate(`/order/${order._id}`);
         }
-        // eslint-disable-next-line
     }, [navigate, success])
 
   return (
@@ -124,7 +123,7 @@ const PlaceOrderScreen = () => {
                             {error && <Message variant='danger'>{error}</Message>}
                         </ListGroup.Item>
                         <ListGroup.Item>
-                            <Button type='button' className='rounded' style={{width: "100%"}} variant='dark' onClick={placeOrderHandler}>Finish Order</Button>
+                            <Button type='button' className='rounded my-3' style={{width: "100%"}} variant='dark' onClick={placeOrderHandler}>Finish Order</Button>
                         </ListGroup.Item>
                     </ListGroup>
                 </Card>

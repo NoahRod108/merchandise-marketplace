@@ -34,7 +34,7 @@ const PaymentScreen = () => {
                     <Form.Check type='radio' label='Paypal' id='Paypal' name='payment' value='Paypal' checked onChange={(e) => setPayment(e.target.value)}></Form.Check>
                 </Col>
             </Form.Group>
-            <Button type='submit' variant='dark'>Continue</Button>
+            <Button type='submit' className='rounded my-3' variant='dark'>Continue</Button>
         </Form>
     </FormContainer>
   )
