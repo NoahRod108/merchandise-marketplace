@@ -8,6 +8,7 @@ import { getOrderDetails, payOrder, deliveredOrder } from '../actions/orderActio
 import axios from 'axios';
 import { PayPalButton } from 'react-paypal-button-v2';
 import { ORDER_PAY_RESET, ORDER_DELIVERED_RESET } from '../constants/orderConstants';
+import { userUpdateCart } from '../actions/userActions';
 
 const OrderScreen = () => {
     const dispatch = useDispatch();
@@ -25,6 +26,9 @@ const OrderScreen = () => {
 
     const userLogin = useSelector(state => state.reducer.userLogin);
     const { userInfo } = userLogin;
+
+    const cart = useSelector((state) => state.reducer.cart);
+    const { cartItems } = cart;
 
     if(!loading){
         order.itemPrice = order.orderItems.reduce((acc, item) => acc + item.price * item.quantity, 0)
@@ -53,13 +57,14 @@ const OrderScreen = () => {
             dispatch({type: ORDER_DELIVERED_RESET});
 
             dispatch(getOrderDetails(params.id));
+            dispatch(userUpdateCart(cartItems));
         }else if(!order.isPaid){
             addPaypalScript();
         }else{
             setSdkReady(true);
         }
 
-    }, [params, dispatch, order, paySuccess, deliveredSuccess, userInfo])
+    }, [params, dispatch, order, paySuccess, deliveredSuccess, userInfo, cartItems])
 
     const successPaymentHandler = (paymentResult) => {
         dispatch(payOrder(params.id, paymentResult));

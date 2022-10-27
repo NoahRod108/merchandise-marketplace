@@ -1,5 +1,7 @@
 import axios from "axios";
+import { CART_RESET } from "../constants/cartConstants";
 import { ORDER_ADMIN_LIST_FAIL, ORDER_ADMIN_LIST_REQUEST, ORDER_ADMIN_LIST_SUCCESS, ORDER_CREATE_FAIL, ORDER_CREATE_REQUEST, ORDER_CREATE_SUCCESS, ORDER_DELIVERED_FAIL, ORDER_DELIVERED_REQUEST, ORDER_DELIVERED_SUCCESS, ORDER_DETAILS_FAIL, ORDER_DETAILS_REQUEST, ORDER_DETAILS_SUCCESS, ORDER_LIST_FAIL, ORDER_LIST_REQUEST, ORDER_LIST_SUCCESS, ORDER_PAY_FAIL, ORDER_PAY_REQUEST, ORDER_PAY_SUCCESS, } from '../constants/orderConstants';
+import { USER_LOGIN_SUCCESS } from "../constants/userConstants";
 
 export const createOrder = (order) => async(dispatch, getState) =>{
     try {
@@ -22,6 +24,17 @@ export const createOrder = (order) => async(dispatch, getState) =>{
             type: ORDER_CREATE_SUCCESS,
             payload: data,
         })
+
+        dispatch({
+            type: CART_RESET,
+        })
+
+        dispatch({
+            type: 'USER_CART_UPDATE_SUCCESS',
+            payload: [],
+        })
+        
+        localStorage.removeItem("cartItems");
 
     } catch (error) {
         dispatch({
