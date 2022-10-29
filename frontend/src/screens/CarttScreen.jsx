@@ -12,13 +12,16 @@ const CarttScreen = () => {
 
     const userLogin = useSelector(state => state.reducer.userLogin);
     const { userInfo } = userLogin;
+
+    const userDetails = useSelector(state => state.reducer.getUserDetails);
+    const { user } = userDetails;
     
     const cart = useSelector((state) => state.reducer.cart);
     const { cartItems } = cart;
 
-    if(cartItems.length === 0){
-        localStorage.setItem('cartItems', JSON.stringify(userInfo.cartItems));
-        dispatch(userUpdateCart(userInfo.cartItems));
+    if(!localStorage.getItem('cartItems')){
+        localStorage.setItem('cartItems', JSON.stringify(user.cartItems));
+        dispatch(userUpdateCart(user.cartItems));
         window.location.reload();
     }
 

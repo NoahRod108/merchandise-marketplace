@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import Product from './../components/Product';
 import { Row, Col, Container } from 'react-bootstrap';
 import { listProducts } from '../actions/productActions';
+import { getUserDetails } from '../actions/userActions';
 import Message from '../components/Message';
 import Loader from '../components/Loader';
 import Paginate from '../components/Paginate';
@@ -19,8 +20,11 @@ const HomeScreen = () => {
     const productList = useSelector(state => state.reducer.productList);
     const { loading, error, products, page, pages } = productList;
 
+    const userDetails = useSelector(state => state.reducer.getUserDetails);
+
     useEffect(() =>{
         dispatch(listProducts(searchWord, pageNumber));
+        dispatch(getUserDetails('profile'))
     }, [dispatch, searchWord, pageNumber]);
 
   return (

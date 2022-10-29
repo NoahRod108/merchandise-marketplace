@@ -34,7 +34,7 @@ export const createOrder = (order) => async(dispatch, getState) =>{
             payload: [],
         })
         
-        localStorage.removeItem("cartItems");
+        localStorage.setItem("cartItems", JSON.stringify([]));
 
     } catch (error) {
         dispatch({
