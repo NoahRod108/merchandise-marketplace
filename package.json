@@ -1,7 +1,7 @@
 {
   "name": "merchandise-app",
   "version": "1.0.0",
-  "description": "MERN stack test app",
+  "description": "MERN stack commerce app",
   "main": "server.js",
   "type": "module",
   "scripts": {

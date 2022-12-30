@@ -9,6 +9,9 @@ const Header = () => {
     const userLogin = useSelector(state => state.reducer.userLogin);
     const { userInfo } = userLogin;
 
+    const cart = useSelector((state) => state.reducer.cart);
+    const { cartItems } = cart;
+
     const dispatch = useDispatch();
 
     const logoutHandler = () => {
@@ -20,7 +23,7 @@ const Header = () => {
         <Navbar expand="lg">
             <Container>
                 <LinkContainer to='/'>
-                    <Navbar.Brand href="/">Spooky Shop</Navbar.Brand>
+                    <Navbar.Brand href="/">Spooky Spirit</Navbar.Brand>
                 </LinkContainer>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
@@ -29,7 +32,7 @@ const Header = () => {
                         {userInfo ? (
                             <>
                                 <LinkContainer to='/cart'>
-                                    <Nav.Link href="/cart"><i className='fas fa-shopping-cart'></i>Cart</Nav.Link>
+                                    <Nav.Link className='cart-nav-link' href="/cart"><div style={{display: cartItems.length <= 0 ? 'none' : ''}} className="cart-quantity">{cartItems.length}</div><i className='fas fa-shopping-cart'></i>Cart</Nav.Link>
                                 </LinkContainer>
                                 <NavDropdown title={userInfo.name} id='username'>
                                     <LinkContainer to='/profile'>

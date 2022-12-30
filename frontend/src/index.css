@@ -43,6 +43,26 @@ body {
     color: #fff;
 }
 
+.cart-nav-link{
+    position: relative;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.cart-nav-link .cart-quantity{
+    position: absolute;
+    background: rgb(32,184,14);
+    font-size: 0.8rem;
+    padding: 4px;
+    width: 24px;
+    border-radius: 50%;
+    top: 0;
+    right: 0;
+    /* box-shadow: 1px 7px 36px -4px rgba(32,184,14,0.4);
+    -webkit-box-shadow: 1px 7px 36px -4px rgba(32,184,14,0.4);
+    -moz-box-shadow: 1px 7px 36px -4px rgba(32,184,14,0.4); */
+}
+
 /* searchbar */
 .search-bar input{
     border-radius: 5px 0 0 5px;
