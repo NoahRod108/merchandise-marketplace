@@ -32,7 +32,9 @@ const Header = () => {
                         {userInfo ? (
                             <>
                                 <LinkContainer to='/cart'>
-                                    <Nav.Link className='cart-nav-link' href="/cart"><div style={{display: cartItems.length <= 0 ? 'none' : ''}} className="cart-quantity">{cartItems.length}</div><i className='fas fa-shopping-cart'></i>Cart</Nav.Link>
+                                    <div className='nav-item'>
+                                        <Nav.Link className='cart-nav-link' href="/cart"><div style={{display: cartItems.length <= 0 ? 'none' : ''}} className="cart-quantity">{cartItems.length}</div><i className='fas fa-shopping-cart'></i>Cart</Nav.Link>
+                                    </div>
                                 </LinkContainer>
                                 <NavDropdown title={userInfo.name} id='username'>
                                     <LinkContainer to='/profile'>

@@ -98,13 +98,13 @@ const CarttScreen = () => {
             }
         </Col>
         <Col md={4}>
-            <Card>
+            <Card className='cart--checkout--card'>
                 <ListGroup variant='flush'>
-                    <ListGroup.Item>
+                    <ListGroup.Item className='list--group'>
                         <h2>Subtotal ({cartItems.reduce((acc, curItem) => acc + curItem.quantity, 0)}) items</h2>
                         ${cartItems.reduce((acc, curItem) => acc + curItem.quantity * curItem.price, 0).toFixed(2)}
                     </ListGroup.Item>
-                    <ListGroup.Item>
+                    <ListGroup.Item className='list--group'>
                         <Row className='m-1'>
                             <Button className='rounded my-3' variant='dark' type='button' disabled={cartItems.length === 0} onClick={checkoutHandler}>Checkout</Button>
                         </Row>

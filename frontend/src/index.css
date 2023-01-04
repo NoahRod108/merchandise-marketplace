@@ -24,6 +24,10 @@ body {
     padding-right: 24px;
 }
 
+.form-control{
+    border-radius: 4px;
+}
+
 .navbar{
     background-color: #ff881b;
     margin-bottom: 12px;
@@ -163,13 +167,21 @@ main{
     color: rgb(220, 220, 0);
 }
 
-
 .cart--items{
     padding: 1rem;
+    border-radius: 8px;
+}
+
+.cart--checkout{
+    border-radius: 8px;
 }
 
 .cart--items .row [class^='col']{
     margin: auto;
+}
+
+.cart--checkout--card{
+    background: transparent;
 }
 
 /* product screen */
@@ -217,4 +229,49 @@ table tbody tr td a{
 /* payment process */
 .payment-process .nav-item .active{
     color: #919191;
+}
+
+.payment--checkout--card{
+    background: transparent;
+}
+
+.list--group{
+    border-radius: 4px;
+    margin-top: 1rem;
+}
+
+@media (width <= 768px){
+    /* navbar */
+    .navbar>.container{
+        flex-direction: column;
+
+    }
+
+    .navbar-brand{
+        margin: 0;
+    }
+
+    .navbar-nav{
+        align-items: center;
+        margin: 1rem;
+    }
+
+    .navbar-collapse{
+        margin-top: 1rem;
+    }
+
+    .nav-item{
+        margin: 0;
+    }
+
+    .card--form{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .card--form--container{
+        align-items: center;
+    }
 }

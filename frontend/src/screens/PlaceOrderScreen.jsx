@@ -49,7 +49,7 @@ const PlaceOrderScreen = () => {
             <Col md={8}>
                 <ListGroup variant='flush'>
                     {/* Shipping address */}
-                    <ListGroup.Item>
+                    <ListGroup.Item className='list--group'>
                         <h2>Shipping</h2>
                         <p>
                             <strong>Address: </strong>
@@ -57,13 +57,13 @@ const PlaceOrderScreen = () => {
                         </p>
                     </ListGroup.Item>
                     {/* Payment Method */}
-                    <ListGroup.Item>
+                    <ListGroup.Item className='list--group'>
                         <h2>Payment Method</h2>
                             <strong>Choice of payment: </strong>
                             {payment.payment}
                     </ListGroup.Item>
                     {/* Items ordered */}
-                    <ListGroup.Item>
+                    <ListGroup.Item className='list--group'>
                         <h2>Your Order</h2>
                         <ListGroup variant='flush'>
                             {cartItems.map(item => 
@@ -89,8 +89,8 @@ const PlaceOrderScreen = () => {
                 </ListGroup>
             </Col>
             {/* Order summary */}
-            <Col md={4}>
-                <Card>
+            <Col md={4} className='list--group'>
+                <Card className='payment--checkout--card'>
                     <ListGroup variant='flush'>
                         <ListGroup.Item>
                             <h2>Order Summary</h2>
@@ -122,7 +122,7 @@ const PlaceOrderScreen = () => {
                         <ListGroup.Item>
                             {error && <Message variant='danger'>{error}</Message>}
                         </ListGroup.Item>
-                        <ListGroup.Item>
+                        <ListGroup.Item className='list--group'>
                             <Button type='button' className='rounded my-3' style={{width: "100%"}} variant='dark' onClick={placeOrderHandler}>Finish Order</Button>
                         </ListGroup.Item>
                     </ListGroup>

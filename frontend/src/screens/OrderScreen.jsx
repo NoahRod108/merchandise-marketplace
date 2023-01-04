@@ -155,7 +155,7 @@ const OrderScreen = () => {
             </Col>
             {/* Order summary */}
             <Col md={4}>
-                <Card>
+                <Card className='payment--checkout--card'>
                     <ListGroup variant='flush'>
                         <ListGroup.Item>
                             <h2>Order Summary</h2>

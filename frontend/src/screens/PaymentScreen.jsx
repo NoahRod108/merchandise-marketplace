@@ -24,10 +24,10 @@ const PaymentScreen = () => {
     }
 
   return (
-    <FormContainer>
+    <FormContainer className='card--form--container'>
         <CheckoutProcess step1 step2/>
         <h1>Payment Method</h1>
-        <Form onSubmit={submitHandler}>
+        <Form onSubmit={submitHandler} className='card--form'>
             <Form.Group>
                 <Form.Label as='legend'>Select Payment Method</Form.Label>
                 <Col>
