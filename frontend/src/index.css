@@ -244,7 +244,10 @@ table tbody tr td a{
     /* navbar */
     .navbar>.container{
         flex-direction: column;
+    }
 
+    #basic-navbar-nav .nav-link{
+        padding: 1rem;
     }
 
     .navbar-brand{
@@ -252,8 +255,9 @@ table tbody tr td a{
     }
 
     .navbar-nav{
+        justify-content: center;
         align-items: center;
-        margin: 1rem;
+        margin-top: 1rem;
     }
 
     .navbar-collapse{
@@ -264,6 +268,18 @@ table tbody tr td a{
         margin: 0;
     }
 
+    /* carousel */
+    .carousel-caption{
+        top: 50%;
+        left: 25%;
+        transform: translate(-50%, -50%);
+    }
+
+    .carousel-caption > h1, .carousel-caption > h3{
+        font-size: 1.2rem;
+    }
+    
+    /* cards */
     .card--form{
         display: flex;
         flex-direction: column;
@@ -273,5 +289,10 @@ table tbody tr td a{
 
     .card--form--container{
         align-items: center;
+    }
+
+    /* order screen */
+    .order--number{
+        word-wrap: break-word;
     }
 }

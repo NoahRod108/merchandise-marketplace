@@ -57,7 +57,7 @@ const ProductScreen = () => {
             <>
                 <Row>
                     <Col md={6}>
-                        <Image src={product.image} fluid/>
+                        <Image src={product.image} fluid rounded/>
                     </Col>
                     <Col md={6}>
                         <ListGroup variant='flush'>
@@ -131,7 +131,7 @@ const ProductScreen = () => {
                                 </ListGroup.Item>
                             )}
 
-                            <ListGroup.Item>
+                            <ListGroup.Item className='list--group'  style={{marginBottom: "1rem"}}>
                                 <Row className='m-1'>
                                     <Button className='rounded' variant='dark' type='button' disabled={product.countInStock === 0} onClick={addToCartHandler}>Add to Cart</Button>
                                 </Row>
@@ -143,7 +143,7 @@ const ProductScreen = () => {
                     <Col md={6}>
                         <h2>Reviews</h2>
                         {product.reviews.length === 0 && <Message variant='info' timeout='show'>There are no reviews for this product</Message>}
-                        <ListGroup variant='flush'>
+                        <ListGroup variant='flush' className='list--group'>
                             {product.reviews.map(review => (
                                 <ListGroup.Item key={review._id}>
                                     <strong>{review.name}</strong>
@@ -152,7 +152,7 @@ const ProductScreen = () => {
                                     <p>{review.comment}</p>
                                 </ListGroup.Item>
                             ))}
-                            <ListGroup.Item>
+                            <ListGroup.Item className='list--group'>
                                 <h2>Leave a Review</h2>
                                 {reviewError && <Message variant='danger'>{reviewError}</Message>}
                                 {userInfo ? (

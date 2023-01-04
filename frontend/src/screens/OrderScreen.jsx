@@ -77,12 +77,12 @@ const OrderScreen = () => {
   return loading ? <Loader /> : 
     error ? <Message variant='danger'>{error}</Message> : 
     <Container>
-        <h1>Order: {order._id}</h1>
         <Row>
             <Col md={8}>
+                <h1 className='order--number'>Order: {order._id}</h1>
                 <ListGroup variant='flush'>
                     {/* Shipping address */}
-                    <ListGroup.Item>
+                    <ListGroup.Item className='list--group'>
                         <h2>Shipping</h2>
                         <p>
                             <strong>Name: </strong>
@@ -103,7 +103,7 @@ const OrderScreen = () => {
                         )}
                     </ListGroup.Item>
                     {/* Payment Method */}
-                    <ListGroup.Item>
+                    <ListGroup.Item className='list--group'>
                         <h2>Payment Method</h2>
                             <strong>Choice of payment: </strong>
                             {order.payment}
@@ -115,7 +115,7 @@ const OrderScreen = () => {
                             )}
                     </ListGroup.Item>
                     {/* Items ordered */}
-                    <ListGroup.Item>
+                    <ListGroup.Item className='list--group'>
                         <h2 style={{marginBottom: "12px"}}>Your Order</h2>
                         <ListGroup variant='flush'>
                             <Row style={{textAlign: "center"}}>
@@ -157,7 +157,7 @@ const OrderScreen = () => {
             <Col md={4}>
                 <Card className='payment--checkout--card'>
                     <ListGroup variant='flush'>
-                        <ListGroup.Item>
+                        <ListGroup.Item style={{marginTop: "1rem"}}>
                             <h2>Order Summary</h2>
                         </ListGroup.Item>
                         <ListGroup.Item>
@@ -185,7 +185,7 @@ const OrderScreen = () => {
                             </Row>
                         </ListGroup.Item>
                         {!order.isPaid && (
-                            <ListGroup.Item>
+                            <ListGroup.Item className='list--group'>
                                 {payLoading && <Loader />}
                                 {!sdkReady ? <Loader /> : (
                                     <PayPalButton amount={order.totalPrice} onSuccess={successPaymentHandler} />
